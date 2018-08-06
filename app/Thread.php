@@ -15,4 +15,9 @@ class Thread extends Model
     {
         return $this->hasMany(Reply::class);
     }
+
+    public function creater()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
