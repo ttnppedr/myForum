@@ -9,19 +9,22 @@ class ThreadTest extends TestCase
 {
     use DatabaseMigrations;
 
+    public function setUp()
+    {
+        parent::setUp();
+
+        $this->thread = factory('App\Thread')->create();
+    }
+
     /** @test */
     public function a_thread_has_replies()
     {
-        $thread = factory('App\Thread')->create();
-
-        $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $thread->replies);
+        $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $this->thread->replies);
     }
 
     /** @test */
     public function a_thread_has_a_creater()
     {
-        $thread = factory('App\Thread')->create();
-
-        $this->assertInstanceOf('App\User', $thread->creater);
+        $this->assertInstanceOf('App\User', $this->thread->creater);
     }
 }
