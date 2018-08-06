@@ -9,6 +9,8 @@ class ThreadTest extends TestCase
 {
     use DatabaseMigrations;
 
+    protected $thread;
+
     public function setUp()
     {
         parent::setUp();
