@@ -19,15 +19,15 @@ class ReadThreadsTest extends TestCase
     /** @test */
     public function a_user_can_view_all_threads()
     {
-        $response = $this->get('/threads');
-        $response->assertSee($this->thread->title);
+        $this->get('/threads')
+            ->assertSee($this->thread->title);
     }
 
     /** @test */
     public function a_user_can_read_a_single_thread()
     {
-        $response = $this->get($this->thread->path());
-        $response->assertSee($this->thread->title);
+        $this->get($this->thread->path())
+            ->assertSee($this->thread->title);
     }
 
     /** @test */
@@ -35,7 +35,7 @@ class ReadThreadsTest extends TestCase
     {
         $reply = factory('App\Reply')->create(['thread_id' => $this->thread->id]);
 
-        $response = $this->get($this->thread->path());
-        $response->assertSee($reply->body);
+        $this->get($this->thread->path())
+            ->assertSee($reply->body);
     }
 }
