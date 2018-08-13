@@ -8,7 +8,6 @@
                 <div class="card-header">
                     <a href="#">{{ $thread->creater->name }}</a> posted
                     {{ $thread->title }}
-                    }
                 </div>
 
                 <div class="card-body">
