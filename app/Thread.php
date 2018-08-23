@@ -29,7 +29,7 @@ class Thread extends Model
             ->with('owner');
     }
 
-    public function creater()
+    public function creator()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
