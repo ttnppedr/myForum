@@ -1,14 +1,10 @@
-<div class="card">
-    <div class="card-header">
-        <div class="level">
-            <span class="flex">
-                {{ $profileUser->name }} replied to
-                <a href="{{ $activity->subject->thread->path() }}">"{{ $activity->subject->thread->title }}"</a>
-            </span>
-        </div>
-    </div>
+@component('profiles.activities.activity')
+    @slot('heading')
+        {{ $profileUser->name }} replied to
+        <a href="{{ $activity->subject->thread->path() }}">"{{ $activity->subject->thread->title }}"</a>
+    @endslot
 
-    <div class="card-body">
+    @slot('body')
         {{ $activity->subject->body }}
-    </div>
-</div>
+    @endslot
+@endcomponent
