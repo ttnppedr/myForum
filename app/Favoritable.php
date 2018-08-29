@@ -2,7 +2,8 @@
 
 namespace App;
 
-trait Favoritable {
+trait Favoritable
+{
     public function favorite()
     {
         $attributes = ['user_id' => auth()->id()];
