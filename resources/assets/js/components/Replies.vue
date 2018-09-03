@@ -6,7 +6,7 @@
 
         <paginator :dataSet="dataSet" @changed="fetch"></paginator>
 
-        <new-reply :endpoint="endpoint" @created="add"></new-reply>
+        <new-reply @created="add"></new-reply>
     </div>
 </template>
 
