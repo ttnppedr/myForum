@@ -123,7 +123,7 @@ class ThreadTest extends TestCase
 
         $thread = create('App\Thread');
 
-        tap (auth()->user(), function ($user) use ($thread) {
+        tap(auth()->user(), function ($user) use ($thread) {
             $this->assertTrue($thread->hasUpdatedFor($user));
 
             auth()->user()->read($thread);
