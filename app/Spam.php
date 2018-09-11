@@ -6,19 +6,19 @@ class Spam
 {
     public function detect($body)
     {
-        $this->detectinvalidKeywords($body);
+        $this->detectInvalidKeywords($body);
 
         return false;
     }
 
-    protected function detectinvalidKeywords($body)
+    protected function detectInvalidKeywords($body)
     {
         $invalidKeywords = [
             'yahoo customer support'
         ];
 
         foreach ($invalidKeywords as $keyword) {
-            if (stripos(request('body'), $keyword) !== false) {
+            if (stripos($body, $keyword) !== false) {
                 throw new \Exception('Your reply contains spam');
             }
         }
