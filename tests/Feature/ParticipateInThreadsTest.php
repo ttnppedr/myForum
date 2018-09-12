@@ -40,7 +40,8 @@ class ParticipateInThreadsTest extends TestCase
 
         $reply = make('App\Reply', ['body' => null]);
         $this->post($thread->path() . '/replies', $reply->toArray())
-            ->assertSessionHasErrors('body');
+            ->assertSee('Sorry, your reply could not be saved at this time.')
+            ->assertStatus(422);
     }
 
     /** @test */
@@ -108,8 +109,8 @@ class ParticipateInThreadsTest extends TestCase
             'body' => 'Yahoo customer Support'
         ]);
 
-        $this->expectException(\Exception::class);
-
-        $this->post($thread->path() . '/replies', $reply->toArray());
+        $this->post($thread->path() . '/replies', $reply->toArray())
+            ->assertSee('Sorry, your reply could not be saved at this time.')
+            ->assertStatus(422);
     }
 }
