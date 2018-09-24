@@ -7,7 +7,7 @@ use App\Events\ThreadReceiveNewReply;
 
 class Thread extends Model
 {
-    use RecordsActivity;
+    use RecordsActivity, RecordsVisits;
 
     protected $guarded = [];
 

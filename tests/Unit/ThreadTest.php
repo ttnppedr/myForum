@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
+use Illuminate\Support\Facades\Redis;
 
 class ThreadTest extends TestCase
 {
@@ -130,5 +131,23 @@ class ThreadTest extends TestCase
 
             $this->assertFalse($thread->hasUpdatedFor($user));
         });
+    }
+
+    /** @test **/
+    public function a_thread_records_each_visit()
+    {
+        $thread = make('App\Thread', ['id' => '']);
+
+        $thread->resetVisits();
+
+        $this->assertSame(0, $thread->visits());
+
+        $thread->recordVisit();
+
+        $this->assertEquals(1, $thread->visits());
+
+        $thread->recordVisit();
+
+        $this->assertEquals(2, $thread->visits());
     }
 }
