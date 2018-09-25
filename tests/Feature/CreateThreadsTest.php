@@ -114,7 +114,7 @@ class CreateThreadsTest extends TestCase
     {
         $this->withExceptionHandling()->signIn();
 
-        auth()->user()->confirmed = true;
+        auth()->user()->confirm();
 
         $thread = make('App\Thread', $overrides);
 
