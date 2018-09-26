@@ -112,4 +112,9 @@ class Thread extends Model
 
         $this->attributes['slug'] = $slug;
     }
+
+    public function markBestReply(Reply $reply)
+    {
+        $this->update(['best_reply_id' => $reply->id]);
+    }
 }
