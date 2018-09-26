@@ -47,7 +47,10 @@ class RegistrationTest extends TestCase
         $response = $this->get(route('register.confirm', ['token' => $user->confirmation_token]))
              ->assertRedirect(route('threads'));
 
-        $this->assertTrue($user->refresh()->confirmed);
+        tap($user->fresh(), function ($user) {
+            $this->assertTrue($user->confirmed);
+            $this->assertNull($user->confirmation_token);
+        });
     }
 
     /** @test **/
