@@ -64,6 +64,7 @@ class ThreadsController extends Controller
             'channel_id' => request('channel_id'),
             'title' => request('title'),
             'body' => request('body'),
+            'slug' => request('slug')
         ]);
 
         return redirect($thread->path())
