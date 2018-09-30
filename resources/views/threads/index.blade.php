@@ -10,6 +10,29 @@
         </div>
 
         <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    Search
+                </div>
+
+                <div class="card-body">
+                    <div class="body">
+                        <form method="GET" action="/threads/search">
+                            <div class="form-group">
+                                <input type="text" placeholder="Search for something..." name="q" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="submit">Search</button>
+                                <img src="{{ asset('img/search-by-algolia-light-background-b5afedfa.png') }}">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
             @if (count($trending))
                 <div class="card">
                     <div class="card-header">
