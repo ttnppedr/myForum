@@ -4,13 +4,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="form-group">
-                        <textarea name="body"
-                                  id="body"
-                                  class="form-control"
-                                  placeholder="Have something to say?"
-                                  rows="5"
-                                  required
-                                  v-model="body"></textarea>
+                        <wysiwyg name="body" v-model="body" placeholder="Have something to say?" :shouldClear="completed"></wysiwyg>
                     </div>
 
                     <button type="submit"
@@ -32,7 +26,8 @@
     export default {
         data() {
             return {
-                body: ''
+                body: '',
+                completed: false,
             }
         },
 
@@ -64,6 +59,7 @@
                     })
                     .then(({data}) => {
                         this.body = '';
+                        this.completed = true;
 
                         flash('Your reply has been posted');
 

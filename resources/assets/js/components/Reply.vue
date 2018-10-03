@@ -16,8 +16,8 @@
         <div class="card-body">
             <div v-if="editing">
                 <form @submit="update">
-                    <div class="form-group">
-                        <textarea class="form-control" v-model="body" required></textarea>
+                    <div class="form-group trix-content">
+                        <wysiwyg v-model="body"></wysiwyg>
                     </div>
 
                     <button class="btn btn-sm btn-primary">Update</button>
@@ -25,7 +25,7 @@
                 </form>
             </div>
 
-            <div v-else v-html="body"></div>
+            <div v-else v-html="body" class="trix-content"></div>
         </div>
 
         <div class="card-footer level" v-if="authorize('owns', reply) || authorize('owns', reply.thread)">

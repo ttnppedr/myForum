@@ -8,6 +8,8 @@
     </div>
 
     <div class="card-body">
-        {{ $body }}
+        <div class="body trix-content">
+            {{ $body }}
+        </div>
     </div>
 </div>
