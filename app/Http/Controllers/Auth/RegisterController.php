@@ -31,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -76,8 +76,9 @@ class RegisterController extends Controller
 
     protected function registered(Request $request, $user)
     {
-        Mail::to($user)->send(new PleaseConfirmYourEmail($user));
+        $user->confirm();
 
-        return redirect($this->redirectPath());
+        return redirect($this->redirectPath())
+            ->with('flash', 'Your account is now confirmed! You may post to the forum.');
     }
 }
