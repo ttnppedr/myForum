@@ -24,7 +24,7 @@
 
                             <div class="form-group">
                                 <button class="btn btn-primary" type="submit">Search</button>
-                                <img src="{{ asset('img/search-by-algolia-light-background-b5afedfa.png') }}">
+                                <img src="{{ asset('storage/img/search-by-algolia-light-background-b5afedfa.png') }}">
                             </div>
                         </form>
                     </div>
