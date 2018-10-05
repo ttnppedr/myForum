@@ -6,7 +6,6 @@ use App\Channel;
 use App\Filters\ThreadFilters;
 use App\Thread;
 use Illuminate\Http\Request;
-use App\Trending;
 use App\Rules\Recaptcha;
 
 class ThreadsController extends Controller
@@ -21,7 +20,7 @@ class ThreadsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Channel $channel, ThreadFilters $filters, Trending $trending)
+    public function index(Channel $channel, ThreadFilters $filters)
     {
         $threads = $this->getThreads($channel, $filters);
 
@@ -31,7 +30,6 @@ class ThreadsController extends Controller
 
         return view('threads.index', [
             'threads' => $threads,
-            'trending' => $trending->get()
         ]);
     }
 
@@ -81,13 +79,11 @@ class ThreadsController extends Controller
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function show($channelId, Thread $thread, Trending $trending)
+    public function show($channelId, Thread $thread)
     {
         if (auth()->check()) {
             auth()->user()->read($thread);
         }
-
-        $trending->push($thread);
 
         $thread->increment('visits');
 
