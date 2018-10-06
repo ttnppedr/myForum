@@ -62,7 +62,7 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        return in_array($this->name, ['A']);
+        return in_array($this->name, ['ttn']);
     }
 
     public function read($thread)
